@@ -14,7 +14,7 @@ spec:
         version: 1.5.5
   template:
     metadata:
-      name: '{{.namespace}}-config'
+      name: '{{ .namespace }}-config'
     spec:
       project: default
       source:
@@ -22,5 +22,5 @@ spec:
         targetRevision: HEAD
         path: myapplications/appset/yamls/
       destination:
-        namespace: {{.namespace}}
+        namespace: '{{ .namespace }}'
         server: https://kubernetes.default.svc
