@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: myappset
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - list:
+      elements:
+      - namespace: monitoring
+        version: 1.2.3
+      - namespace: monitoring2
+        version: 1.5.5
+  template:
+    metadata:
+      name: '{{.namespace}}-config'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/grcanosa/gitops.git
+        targetRevision: HEAD
+        path: myapplications/appset/yamls/
+      destination:
+        namespace: {{.namespace}}
+        server: https://kubernetes.default.svc

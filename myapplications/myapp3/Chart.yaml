@@ -1,6 +1,8 @@
 apiVersion: v2
-name: mychart
-description: A Helm chart for Kubernetes
+name: test
+description: deploy
 type: application
-version: 0.1.0
+version: 0.0.1
 appVersion: "1.0.0"
+
+
